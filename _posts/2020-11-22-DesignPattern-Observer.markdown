@@ -6,7 +6,7 @@ date: 2020-11-22 10:00:00 +0900
 tags:
 categories: DesignPattern
 ---
-A paragraph looks like this — dolor amet cray stumptown fingerstache neutra food truck seitan poke cardigan waistcoat VHS snackwave celiac hella. Godard seitan shoreditch flexitarian next level trust fund man braid vegan listicle keytar bitters. Disrupt cray fashion axe unicorn lomo shaman poke glossier keffiyeh snackwave austin tattooed seitan hexagon lo-fi. Lumbersexual irony vaporware, butcher shaman church-key iceland.
+옵저버 패턴(Observer Pattern) - 한 객체의 상태가 바뀌면 그 객체에 의존하는 다른 객체들에게 연락이 가고 자동으로 내용이 갱신되는 방식으로 일대다(one to many) 의 의존성을 정의한다.
 
 ***
 
@@ -25,6 +25,7 @@ A paragraph looks like this — dolor amet cray stumptown fingerstache neutra fo
 #### Heading third level
 {% endhighlight %}
 
+![]({{site.baseurl}}/images/ObserverPatten_diagram.png)
 ***
 
 #### Lists
