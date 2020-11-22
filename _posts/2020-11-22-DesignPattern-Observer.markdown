@@ -4,7 +4,7 @@ title: DesignPattern - Observer
 image: 8.jpg
 date: 2020-11-22 10:00:00 +0900
 tags:
-categories: guide
+categories: DesignPattern
 ---
 A paragraph looks like this — dolor amet cray stumptown fingerstache neutra food truck seitan poke cardigan waistcoat VHS snackwave celiac hella. Godard seitan shoreditch flexitarian next level trust fund man braid vegan listicle keytar bitters. Disrupt cray fashion axe unicorn lomo shaman poke glossier keffiyeh snackwave austin tattooed seitan hexagon lo-fi. Lumbersexual irony vaporware, butcher shaman church-key iceland.
 
