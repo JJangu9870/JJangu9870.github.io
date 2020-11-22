@@ -30,106 +30,79 @@ categories: DesignPattern
 
 ***
 
-##### Observable
+##### Subject - extends Observable
 > 이 클래스는 모델 뷰 패러다임에서 관찰 가능한 객체 또는 "데이터"를 나타냅니다. 응용 프로그램이 관찰하기를 원하는 객체를 나타내도록 하위 클래스화할 수 있습니다
 
 {% highlight markdown %}
-import java.util.Observable;
 
-public class WeatherData extends Observable {
-    private float temparature;
-    private float humidity;
-    private float pressure;
-
-    public WeatherData(){}
-
-    public void measurementsChanged(){
-        setChanged(); // 1. 객체의 상태 변경 알림
-        notifyObservers(); //2. Observer들에게 push
+    import java.util.Observable;
+    
+    public class WeatherData extends Observable {
+        private float temparature;
+        private float humidity;
+        private float pressure;
+    
+        public WeatherData(){}
+    
+        public void measurementsChanged(){
+            setChanged(); // 1. 객체의 상태 변경 알림
+            notifyObservers(); //2. Observer들에게 push
+        }
+    
+        public void setMeasurements(float temparature, float humidity, float pressure){
+            this.temparature = temparature;
+            this.humidity = humidity;
+            this.pressure = pressure;
+            measurementsChanged();
+        }
+    
+        public float getTemparature(){
+            return temparature;
+        }
+    
+        public float getHumidity(){
+            return humidity;
+        }
+    
+        public float getPressure(){
+            return pressure;
+        }
+    
     }
-
-    public void setMeasurements(float temparature, float humidity, float pressure){
-        this.temparature = temparature;
-        this.humidity = humidity;
-        this.pressure = pressure;
-        measurementsChanged();
-    }
-
-    public float getTemparature(){
-        return temparature;
-    }
-
-    public float getHumidity(){
-        return humidity;
-    }
-
-    public float getPressure(){
-        return pressure;
-    }
-
-}
-
 {% endhighlight %}
 
-###### Ordered list example:
-
-1. Poutine drinking vinegar bitters.
-2. Coloring book distillery fanny pack.
-3. Venmo biodiesel gentrify enamel pin meditation.
-4. Jean shorts shaman listicle pickled portland.
-5. Salvia mumblecore brunch iPhone migas.
-
-###### Unordered list example:
-
-* Bitters semiotics vice thundercats synth.
-* Literally cred narwhal bitters wayfarers.
-* Kale chips chartreuse paleo tbh street art marfa.
-* Mlkshk polaroid sriracha brooklyn.
-* Pug you probably haven't heard of them air plant man bun.
-
+##### Observer - implements Observer
 {% highlight markdown %}
-1. Order list item 1
-2. Order list item 1
 
-* Unordered list item 1
-* Unordered list item 2
+    import java.util.Observable;
+    import java.util.Observer;
+    
+    public class CurrentlyConditionalDisplay implements Observer, DisplayElement {
+        Observable observable;
+        private float temparature;
+        private float humidity;
+    
+        public CurrentlyConditionalDisplay(Observable observable){
+            this.observable = observable;
+            observable.addObserver(this);
+        }
+    
+        @Override
+        public void update(Observable o, Object arg) {
+            if(o instanceof WeatherData){
+                WeatherData weatherData = (WeatherData) o;
+                this.temparature = weatherData.getTemparature();
+                this.humidity = weatherData.getHumidity();
+                display();
+            }
+        }
+    
+        @Override
+        public void display() {
+            System.out.println("Current conditions : " + temparature + "F degrees and " + humidity + "% humidity");
+        }
+    }
 {% endhighlight %}
 
-***
-
-#### Quotes
-
-###### A quote looks like this:
-
-> Never put off till tomorrow what may be done day after tomorrow just as well. — Mark Twain
 
 ***
-
-#### Syntax Highlighter
-
-{% highlight js %}
-  $('.top').click(function () {
-    $('html, body').stop().animate({ scrollTop: 0 }, 'slow', 'swing');
-  });
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > $(window).height()) {
-      $('.top').addClass("top-active");
-    } else {
-      $('.top').removeClass("top-active");
-    };
-  });
-{% endhighlight %}
-
-***
-
-#### Images
-
-![]({{site.baseurl}}/images/2.jpg)
-
-***
-
-#### Videos
-
-###### Youtube
-
-<iframe src="https://www.youtube.com/embed/iWowJBRMtpc" frameborder="0" allowfullscreen></iframe>
