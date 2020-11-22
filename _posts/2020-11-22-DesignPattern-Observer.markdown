@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DesignPattern - Observer
-image: 8.jpg
+image: ObserverPatten_diagram.png
 date: 2020-11-22 10:00:00 +0900
 tags:
 categories: DesignPattern
