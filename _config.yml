@@ -1,7 +1,7 @@
 title: JJangu's Coding
 description: 짱구의 코딩공부
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://JJangu9870.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: ""
+url: "https://JJangu9870.github.io/"
 
 # Author
 author-name:    짱구
