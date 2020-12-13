@@ -33,6 +33,8 @@ categories: DesignPattern
 ##### Subject - extends Observable
 > 이 클래스는 모델 뷰 패러다임에서 관찰 가능한 객체 또는 "데이터"를 나타냅니다. 응용 프로그램이 관찰하기를 원하는 객체를 나타내도록 하위 클래스화할 수 있습니다
 
+<script src="https://gist.github.com/JJangu9870/56af111ec1433ed86b42b000ffd83fff.js"></script>
+
 {% highlight markdown %}
 
     import java.util.Observable;
