@@ -38,7 +38,7 @@ categories: DesignPattern
 
 ##### Observer - implements Observer
 > 옵저버. 주제 객체에서 상태가 바뀌었다는 것을 알려주기를 기다린다. 하나의 주제에 여러개의 옵저버가 연관된 일대다(one to many)의 관계가 성립된다.
-> 
+
 <script src="https://gist.github.com/JJangu9870/b8fa12f29c21343881f7db850024f04b.js"></script>
 
 
