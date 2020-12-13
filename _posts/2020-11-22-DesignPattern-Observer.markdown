@@ -31,80 +31,15 @@ categories: DesignPattern
 ***
 
 ##### Subject - extends Observable
-> 이 클래스는 모델 뷰 패러다임에서 관찰 가능한 객체 또는 "데이터"를 나타냅니다. 응용 프로그램이 관찰하기를 원하는 객체를 나타내도록 하위 클래스화할 수 있습니다
+> 주제 역할을 하는 클래스(상태가 들어있음). 데이터의 주인. 데이터가 변경되었을 때 옵저버에게 noti를 해준다. 따라서 옵저버는 주제에게 의존성을 가진다.
 
 <script src="https://gist.github.com/JJangu9870/56af111ec1433ed86b42b000ffd83fff.js"></script>
 
-{% highlight markdown %}
-
-    import java.util.Observable;
-    
-    public class WeatherData extends Observable {
-        private float temparature;
-        private float humidity;
-        private float pressure;
-    
-        public WeatherData(){}
-    
-        public void measurementsChanged(){
-            setChanged(); // 1. 객체의 상태 변경 알림
-            notifyObservers(); //2. Observer들에게 push
-        }
-    
-        public void setMeasurements(float temparature, float humidity, float pressure){
-            this.temparature = temparature;
-            this.humidity = humidity;
-            this.pressure = pressure;
-            measurementsChanged();
-        }
-    
-        public float getTemparature(){
-            return temparature;
-        }
-    
-        public float getHumidity(){
-            return humidity;
-        }
-    
-        public float getPressure(){
-            return pressure;
-        }
-    
-    }
-{% endhighlight %}
 
 ##### Observer - implements Observer
-{% highlight markdown %}
-
-    import java.util.Observable;
-    import java.util.Observer;
-    
-    public class CurrentlyConditionalDisplay implements Observer, DisplayElement {
-        Observable observable;
-        private float temparature;
-        private float humidity;
-    
-        public CurrentlyConditionalDisplay(Observable observable){
-            this.observable = observable;
-            observable.addObserver(this);
-        }
-    
-        @Override
-        public void update(Observable o, Object arg) {
-            if(o instanceof WeatherData){
-                WeatherData weatherData = (WeatherData) o;
-                this.temparature = weatherData.getTemparature();
-                this.humidity = weatherData.getHumidity();
-                display();
-            }
-        }
-    
-        @Override
-        public void display() {
-            System.out.println("Current conditions : " + temparature + "F degrees and " + humidity + "% humidity");
-        }
-    }
-{% endhighlight %}
+> 옵저버. 주제 객체에서 상태가 바뀌었다는 것을 알려주기를 기다린다. 하나의 주제에 여러개의 옵저버가 연관된 일대다(one to many)의 관계가 성립된다.
+> 
+<script src="https://gist.github.com/JJangu9870/b8fa12f29c21343881f7db850024f04b.js"></script>
 
 
 ***
